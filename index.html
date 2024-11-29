@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div id="logo">ShopMaster</div>
+    <div id="search-bar">
+        <input type="text" placeholder="Search products..." id="search-input">
+        <button>🔍</button> <!-- Simple search icon as button -->
+    </div>
+
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- Cart Icon -->
+        <div id="cart">
+            <span id="cart-count">0</span> items in cart
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="hero">
+        <img src="https://via.placeholder.com/1200x400" alt="Featured Product">
+    </section>
+
+    <!-- Product Section (No Sidebar) -->
+    <main id="products">
+        <!-- Product section -->
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200" alt="Product 1">
+                <h3>Product Name</h3>
+                <p>$99.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200" alt="Product 2">
+                <h3>Product Name</h3>
+                <p>$89.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200" alt="Product 3">
+                <h3>Product Name</h3>
+                <p>$79.99</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; 2024 Shopify. All rights reserved.</p>
+            <ul class="social-links">
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script>
+        // Cart Functionality
+        const cartCount = document.getElementById('cart-count');
+        let cartItems = 0;
+
+        // Add to Cart Event Listener
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                cartItems++;
+                cartCount.textContent = cartItems; // Update the cart count
+            });
+        });
+    </script>
+
+</body>
+
+</html>

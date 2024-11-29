@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header id="header">
+        <div id="logo">ShopMaster</div>
+        <div id="search-bar">
+            <input type="text" placeholder="Search products...">
+            <button>Search</button>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="checkout">
+        <h2>Checkout</h2>
+
+        <section id="cart-summary">
+            <h3>Your Cart</h3>
+            <div class="cart-item">
+                <p>Product Name</p>
+                <p>$99.99</p>
+                <input type="number" value="1" min="1" max="10">
+                <button>Remove</button>
+            </div>
+            <div class="cart-item">
+                <p>Product Name</p>
+                <p>$89.99</p>
+                <input type="number" value="1" min="1" max="10">
+                <button>Remove</button>
+            </div>
+            <div class="cart-item">
+                <p>Product Name</p>
+                <p>$79.99</p>
+                <input type="number" value="1" min="1" max="10">
+                <button>Remove</button>
+            </div>
+
+            <div id="cart-total">
+                <p>Total: <span id="total-price">$269.97</span></p>
+            </div>
+        </section>
+
+        <section id="billing">
+            <h3>Billing Information</h3>
+            <form id="billing-form">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" placeholder="John Doe" required>
+
+                <label for="address">Shipping Address:</label>
+                <input type="text" id="address" placeholder="123 Main St, City, Country" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="john@example.com" required>
+
+                <label for="payment">Payment Details:</label>
+                <input type="text" id="payment" placeholder="Credit Card Number" required>
+
+                <button type="submit">Complete Purchase</button>
+            </form>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <p>&copy; 2024 Shopify. All rights reserved.</p>
+        <ul class="social-links">
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Instagram</a></li>
+        </ul>
+    </footer>
+    <script>
+        // Get all cart items
+        const cartItems = document.querySelectorAll('.cart-item');
+        const totalPriceElem = document.getElementById('total-price');
+
+        function updateTotal() {
+            let total = 0;
+            cartItems.forEach(item => {
+                const price = parseFloat(item.querySelector('p').textContent.replace('$', ''));
+                const quantity = item.querySelector('input').value;
+                total += price * quantity;
+            });
+            totalPriceElem.textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Event listener for quantity changes
+        cartItems.forEach(item => {
+            const quantityInput = item.querySelector('input');
+            quantityInput.addEventListener('input', updateTotal);
+        });
+
+        // Initial total update
+        updateTotal();
+    </script>
+
+
+</body>
+
+</html>
